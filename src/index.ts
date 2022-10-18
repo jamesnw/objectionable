@@ -1,14 +1,17 @@
-export default function(observed: Object, path: string =''){
-    function pathedHandler (path: string){
+interface GenericObserved {
+    [key: string | symbol]: any;
+} 
+export default function(observed: GenericObserved, path: string ='') : GenericObserved{
+    function pathedHandler (path: string) : ProxyHandler<GenericObserved>{
         return {
             set(obj: typeof observed, prop: keyof typeof observed, value: any){
                 obj[prop] = value;
-                console.log(`Set: ${path}/${prop} to ${value}`)
+                console.log(`Set: ${path}/${String(prop)} to ${value}`)
                 return true;
             }
         }
     }
-    function observe(item: Object, hand: object, path: string){
+    function observe(item: GenericObserved, hand: object, path: string){
         const keys = Object.keys(item);
         keys.forEach(key=>{
             if(typeof item[key] === 'object'){
