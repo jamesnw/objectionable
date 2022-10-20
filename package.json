@@ -6,12 +6,16 @@
     "@types/jest": "^29.1.2",
     "@types/node": "18",
     "babel-jest": "^29.2.0",
+    "husky": "^8.0.0",
     "jest": "^29.2.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.4"
   },
   "scripts": {
     "test": "jest",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "husky install"
   }
 }
