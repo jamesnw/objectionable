@@ -1,4 +1,26 @@
 {
+  "name": "objectionable",
+  "version": "0.1.0",
+  "description": "Deep Proxy for objects to help track down rogue mutators",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesnw/objectionable.git"
+  },
+  "keywords": [
+    "javascript",
+    "proxy",
+    "objects"
+  ],
+  "author": "James Stuckey Weber",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesnw/objectionable/issues"
+  },
+  "homepage": "https://github.com/jamesnw/objectionable#readme",
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.19.4",

@@ -2,22 +2,22 @@ interface GenericObserved {
   [key: string | symbol | number]: any;
 }
 
-type iObjectReporterCallback = (
+type ObjectionableReporterCallback = (
   object: any,
   prop: string | symbol,
   path: string,
   value: any
 ) => void;
-interface iObjectOptions {
+interface ObjectionableOptions {
   setValue?: boolean;
-  reporter?: iObjectReporterCallback;
+  reporter?: ObjectionableReporterCallback;
 }
 
 export default function (
   observed: GenericObserved,
-  { setValue = true, reporter }: iObjectOptions = {}
+  { setValue = true, reporter }: ObjectionableOptions = {}
 ): GenericObserved {
-  let defaultReporter: iObjectReporterCallback = function (
+  let defaultReporter: ObjectionableReporterCallback = function (
     object,
     prop,
     path,
