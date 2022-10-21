@@ -4,7 +4,7 @@ interface GenericObserved {
 
 type ObjectionableReporterCallback = (
   object: any,
-  prop: string | symbol,
+  prop: string | symbol | number,
   path: string,
   value: any
 ) => void;
@@ -38,14 +38,14 @@ export default function (
       },
     };
   }
-  function observe(item: GenericObserved, hand: object, path: string = "") {
+  function observe(item: GenericObserved, path: string = "") {
     const keys = Object.keys(item);
     keys.forEach((key) => {
-      if (typeof item[key] === "object") {
-        item[key] = observe(item[key], hand, path + key);
+      if (["object", "array"].includes(typeof item[key])) {
+        item[key] = observe(item[key], `${path}/${key}`);
       }
     });
     return new Proxy(item, pathedHandler(path));
   }
-  return observe(observed, pathedHandler());
+  return observe(observed);
 }
