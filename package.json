@@ -1,11 +1,14 @@
 {
   "name": "objectionable",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Deep Proxy for objects to help track down rogue mutators",
   "main": "dist/index.js",
   "directories": {
     "test": "test"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jamesnw/objectionable.git"
@@ -38,6 +41,9 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "preversion": "npm test",
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags"
   }
 }

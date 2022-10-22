@@ -26,7 +26,7 @@ export default function (
     console.log(`Set: ${path} to ${value}`);
   };
   const reporterToUse = reporter ? reporter : defaultReporter;
-  function pathedHandler(path: string = ""): ProxyHandler<GenericObserved> {
+  function pathedHandler(path: string): ProxyHandler<GenericObserved> {
     return {
       set(obj: typeof observed, prop: keyof typeof observed, value: any) {
         if (setValue) {
@@ -34,7 +34,7 @@ export default function (
         }
         const fullPath = `${path}/${String(prop)}`;
         reporterToUse(observed, prop, fullPath, value);
-        return setValue;
+        return setValue && Reflect.get(obj, prop, value);
       },
     };
   }

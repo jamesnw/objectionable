@@ -56,6 +56,11 @@ describe("Objectionable", () => {
       objected[1] = 2;
       expect(logSpy).toBeCalledWith("Set: /1 to 2");
     });
+    test("objects when setting length", () => {
+      let objected = Objectionable([1]);
+      objected.length = 2;
+      expect(logSpy).toBeCalledWith("Set: /length to 2");
+    });
   });
   describe("mixed object and arrays", () => {
     test("objects to array in object", () => {
