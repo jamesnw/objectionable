@@ -1,6 +1,6 @@
 {
   "name": "objectionable",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Deep Proxy for objects to help track down rogue mutators",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
