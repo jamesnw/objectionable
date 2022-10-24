@@ -79,7 +79,6 @@ const callback: ObjectionableReporterCallback = function (
   if (path === "deep/path/set") {
     throw new Error(`${path} set to ${value}`);
   }
-  return Reflect.set(obj, prop, value);
 };
 ```
 
