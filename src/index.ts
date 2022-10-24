@@ -28,13 +28,14 @@ export default function (
   const reporterToUse = reporter ? reporter : defaultReporter;
   function pathedHandler(path: string): ProxyHandler<GenericObserved> {
     return {
+      // @todo- types are only correct for root
       set(obj: typeof observed, prop: keyof typeof observed, value: any) {
         if (setValue) {
           obj[prop] = value;
         }
         const fullPath = `${path}/${String(prop)}`;
         reporterToUse(observed, prop, fullPath, value);
-        return setValue && Reflect.get(obj, prop, value);
+        return setValue && Reflect.set(obj, prop, value);
       },
     };
   }
