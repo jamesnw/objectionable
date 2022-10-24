@@ -7,13 +7,14 @@ function default_1(observed, { setValue = true, reporter } = {}) {
     const reporterToUse = reporter ? reporter : defaultReporter;
     function pathedHandler(path) {
         return {
+            // @todo- types are only correct for root
             set(obj, prop, value) {
                 if (setValue) {
                     obj[prop] = value;
                 }
                 const fullPath = `${path}/${String(prop)}`;
                 reporterToUse(observed, prop, fullPath, value);
-                return setValue && Reflect.get(obj, prop, value);
+                return setValue && Reflect.set(obj, prop, value);
             },
         };
     }
