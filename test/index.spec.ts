@@ -104,6 +104,21 @@ describe("objectionable", () => {
       expect(logSpy).toBeCalledWith("Set: /0/a/1/b/length to 2");
     });
   });
+  test("allows proxies to coexist", () => {
+    const originalHandler = {
+      set(obj, prop, value) {
+        obj[prop] = value;
+        console.log("original handler: " + value);
+        return true;
+      },
+    };
+    const originalObject = new Proxy({ a: 1 }, originalHandler);
+    const observed = objectionable(originalObject);
+    observed.a = 2;
+    expect(originalObject.a).toEqual(2);
+    expect(logSpy).toBeCalledWith("Set: /a to 2");
+    expect(logSpy).toBeCalledWith("original handler: 2");
+  });
   describe("options", () => {
     describe("setValue", () => {
       test("sets value if not set", () => {

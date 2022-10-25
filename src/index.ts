@@ -13,7 +13,7 @@ interface ObjectionableOptions {
   reporter?: ObjectionableReporterCallback;
 }
 
-export default function (
+module.exports = function (
   observed: GenericObserved,
   { setValue = true, reporter }: ObjectionableOptions = {}
 ): GenericObserved {
@@ -49,4 +49,4 @@ export default function (
     return new Proxy(item, pathedHandler(path));
   }
   return observe(observed);
-}
+};

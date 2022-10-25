@@ -42,7 +42,7 @@ let observed = objectionable(newValue);
 
 Any mutations to `observed` will be reported.
 
-4. Fix the issue, and uninstall objectionable.
+4. Fix the issue, and uninstall `objectionable`. This strategy may have unintended consequences, so it's not recommended to use it long term.
 
 ## Features:
 
