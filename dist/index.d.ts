@@ -6,5 +6,3 @@ interface ObjectionableOptions {
     setValue?: boolean;
     reporter?: ObjectionableReporterCallback;
 }
-export default function (observed: GenericObserved, { setValue, reporter }?: ObjectionableOptions): GenericObserved;
-export {};

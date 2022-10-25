@@ -1,6 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-function default_1(observed, { setValue = true, reporter } = {}) {
+module.exports = function (observed, { setValue = true, reporter } = {}) {
     let defaultReporter = function (object, prop, path, value) {
         console.log(`Set: ${path} to ${value}`);
     };
@@ -28,5 +27,4 @@ function default_1(observed, { setValue = true, reporter } = {}) {
         return new Proxy(item, pathedHandler(path));
     }
     return observe(observed);
-}
-exports.default = default_1;
+};
